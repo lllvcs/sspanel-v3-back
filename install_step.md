@@ -1,13 +1,14 @@
 1.安装 git 等。
-yum install python-setuptools && easy_install pip          apt
+yum install python-setuptools && easy_install pip      or     apt
 
-yum install git            apt
+yum install git          or   apt
 
 如果报错-bash: wget: command not found问题
 请先执行以下yum -y install wget
 
 2.请安装 libsodium
-yum -y groupinstall "Development Tools"     or    apt-get install build-essential
+yum -y groupinstall "Development Tools"     
+or    apt-get install build-essential
 
 wget https://github.com/jedisct1/libsodium/releases/download/1.0.10/libsodium-1.0.10.tar.gz
 
@@ -24,11 +25,14 @@ ldconfig
 git clone -b manyuser https://github.com/lllvcs/shadowsocksr.git
 
 4.进入 Shadowsocks 这个目录，安装依赖
-yum -y install python-devel   or  apt install python-dev
+yum -y install python-devel   
+or  apt install python-dev
 
-yum -y install libffi-devel   or  apt install libffi-dev
+yum -y install libffi-devel   
+or  apt install libffi-dev
 
-yum -y install openssl-devel   or apt install openssl
+yum -y install openssl-devel   
+or apt install openssl
 
 Debian 请勿执行下面这个命令，直接 pip install cymysql
 

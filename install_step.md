@@ -1,15 +1,13 @@
-演示环境：CentOS 6 X64
+1.安装 git 等。
+yum install python-setuptools && easy_install pip          apt
 
-1.请安装 git 等。
-yum install python-setuptools && easy_install pip
-
-yum install git
+yum install git            apt
 
 如果报错-bash: wget: command not found问题
 请先执行以下yum -y install wget
 
 2.请安装 libsodium
-yum -y groupinstall "Development Tools"
+yum -y groupinstall "Development Tools"     or    apt-get install build-essential
 
 wget https://github.com/jedisct1/libsodium/releases/download/1.0.10/libsodium-1.0.10.tar.gz
 
@@ -20,22 +18,23 @@ tar xf libsodium-1.0.10.tar.gz && cd libsodium-1.0.10
 echo /usr/local/lib > /etc/ld.so.conf.d/usr_local_lib.conf
 
 ldconfig
-（如果提示cannot import name OrderedDict，可能需要给服务器打补丁：第三方插件ordereddict
-
-easy_install ordereddict ）
+（如果提示cannot import name OrderedDict，可能需要给服务器打补丁：第三方插件ordereddict)
+( easy_install ordereddict ）
 3.下载程序源代码
-git clone -b manyuser https://github.com/glzjin/shadowsocks.git
+git clone -b manyuser https://github.com/lllvcs/shadowsocksr.git
 
 4.进入 Shadowsocks 这个目录，安装依赖
-yum -y install python-devel
+yum -y install python-devel   or  apt install python-dev
 
-yum -y install libffi-devel
+yum -y install libffi-devel   or  apt install libffi-dev
 
-yum -y install openssl-devel
+yum -y install openssl-devel   or apt install openssl
 
 Debian 请勿执行下面这个命令，直接 pip install cymysql
 
 pip install -r requirements.txt
+
+
 
 5.配置程序
 先得到你的配置文件
@@ -45,6 +44,15 @@ cd shadowsocks(你需要看看是否已经在shadowsock下，如果不在才需�
 cp apiconfig.py userapiconfig.py
 
 cp config.json user-config.json
+
+
+提权
+chmod +x ./*
+
+设置自动启动
+vi /etc/rc.local    (CentOs  rc.local 提权)
+
+
 然后主要编辑 userapiconfig.py ,来解释下里面各项配置的意思
 # Config
 
@@ -145,6 +153,7 @@ MANAGE_PORT = 23333
 #安全设置，限制在线 IP 数所需，下面这个参数随机设置，并且所有节点需要保持一致。
 
 IP_MD5_SALT = 'randomforsafety'
+
 6.运行的话，有几种方式。
 python server.py 用于调错的  这货当ssh关闭的时候就会停止，所以建议执行./run.sh
 ./run.sh 无日志后台运行

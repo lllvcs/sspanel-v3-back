@@ -9,7 +9,7 @@ or   apt
 如果报错-bash: wget: command not found问题
 请先执行以下yum -y install wget
 
-2.请安装 libsodium
+2.安装 libsodium
 
 yum -y groupinstall "Development Tools"     
 or    apt-get install build-essential
@@ -26,9 +26,11 @@ ldconfig
 （如果提示cannot import name OrderedDict，可能需要给服务器打补丁：第三方插件ordereddict)
 ( easy_install ordereddict ）
 
+
 3.下载程序源代码
 
 git clone -b manyuser https://github.com/lllvcs/shadowsocksr.git
+
 
 4.进入 Shadowsocks 这个目录，安装依赖
 
@@ -62,9 +64,11 @@ cp config.json user-config.json
 
 chmod +x ./*
 
+
 设置自动启动
 
 vi /etc/rc.local    (CentOs  rc.local 提权)
+
 
 
 然后主要编辑 userapiconfig.py ,来解释下里面各项配置的意思

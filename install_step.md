@@ -1,7 +1,9 @@
 1.安装 git 等。
-yum install python-setuptools && easy_install pip      or     apt
+yum install python-setuptools && easy_install pip      
+or     apt
 
-yum install git          or   apt
+yum install git          
+or   apt
 
 如果报错-bash: wget: command not found问题
 请先执行以下yum -y install wget

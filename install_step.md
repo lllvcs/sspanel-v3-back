@@ -10,6 +10,7 @@ or   apt
 请先执行以下yum -y install wget
 
 2.请安装 libsodium
+
 yum -y groupinstall "Development Tools"     
 or    apt-get install build-essential
 
@@ -24,10 +25,13 @@ echo /usr/local/lib > /etc/ld.so.conf.d/usr_local_lib.conf
 ldconfig
 （如果提示cannot import name OrderedDict，可能需要给服务器打补丁：第三方插件ordereddict)
 ( easy_install ordereddict ）
+
 3.下载程序源代码
+
 git clone -b manyuser https://github.com/lllvcs/shadowsocksr.git
 
 4.进入 Shadowsocks 这个目录，安装依赖
+
 yum -y install python-devel   
 or  apt install python-dev
 
@@ -44,6 +48,7 @@ pip install -r requirements.txt
 
 
 5.配置程序
+
 先得到你的配置文件
 
 cd shadowsocks(你需要看看是否已经在shadowsock下，如果不在才需要执行这行命令，如果再就不需要执行这行命令了)
@@ -54,13 +59,16 @@ cp config.json user-config.json
 
 
 提权
+
 chmod +x ./*
 
 设置自动启动
+
 vi /etc/rc.local    (CentOs  rc.local 提权)
 
 
 然后主要编辑 userapiconfig.py ,来解释下里面各项配置的意思
+
 # Config
 
 #节点ID
@@ -167,8 +175,11 @@ python server.py 用于调错的  这货当ssh关闭的时候就会停止，所�
 ./logrun.sh 有日志后台运行
 ./stop.sh 停止后台运行
 supervisord
+
 7.我们优化下
+
 编辑 /etc/security/limits.conf
+
 最后添加
 
 * soft nofile 51200
@@ -253,14 +264,17 @@ logfile=/var/log/mu.log ; child log path, use NONE for none; default AUTO
 ;logfile_maxbytes=1MB ; max # logfile bytes b4 rotation (default 50MB)
 
 ;logfile_backups=10 ; # of logfile backups (default 10)
+
 编辑 /etc/init.d/supervisord 在这两行之间添加 ulimit -n 51200
 
     echo -n $"Starting supervisord: "
     ulimit -n 51200
     daemon supervisord -c /etc/supervisord.conf
+    
 然后
 
 service supervisord start
+
 即可。
 
 关于升级
@@ -268,6 +282,7 @@ service supervisord start
 cd shadowsocks
 
 git pull
+
 记得看 https://github.com/glzjin/shadowsocks/wiki/重大更新日志 添加配置项。
 
 ok，后台也安装完了，现在你就可以下载一个 shadowsocks进行使用了。ip和端口在你登录后的右下角有。你也可以邀请别人来共享你的vps。

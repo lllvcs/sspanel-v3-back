@@ -1,4 +1,5 @@
 1.安装 git 等。
+
 yum install python-setuptools && easy_install pip      
 or     apt
 

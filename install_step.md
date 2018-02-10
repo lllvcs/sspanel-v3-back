@@ -60,9 +60,7 @@ cp apiconfig.py userapiconfig.py
 cp config.json user-config.json
 
 
-提权
-
-chmod +x ./*
+提权   chmod +x ./*
 
 
 设置自动启动

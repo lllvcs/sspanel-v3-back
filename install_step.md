@@ -1,30 +1,34 @@
 1.安装 git 等。
 
-yum install python-setuptools && easy_install pip      
-or     apt
+yum install python-setuptools && easy_install pip
+or
+apt nstall python-setuptools && easy_install pip
 
-yum install git          
-or   apt
+yum install git
+or
+apt install git
 
 如果报错-bash: wget: command not found问题
 请先执行以下yum -y install wget
 
+
 2.安装 libsodium
 
-yum -y groupinstall "Development Tools"     
-or    apt-get install build-essential
+yum -y groupinstall "Development Tools"
+or
+apt-get install build-essential
 
-wget https://github.com/jedisct1/libsodium/releases/download/1.0.10/libsodium-1.0.10.tar.gz
+wget https://github.com/jedisct1/libsodium/releases/download/1.0.17/libsodium-1.0.17.tar.gz
 
-tar xf libsodium-1.0.10.tar.gz && cd libsodium-1.0.10
+tar xf libsodium-1.0.10.tar.gz && cd libsodium-1.0.17
 
 ./configure && make -j2 && make install
 
 echo /usr/local/lib > /etc/ld.so.conf.d/usr_local_lib.conf
 
 ldconfig
-（如果提示cannot import name OrderedDict，可能需要给服务器打补丁：第三方插件ordereddict)
-( easy_install ordereddict ）
+(如果提示cannot import name OrderedDict，可能需要给服务器打补丁：第三方插件ordereddict)
+(easy_install ordereddict)
 
 
 3.下载程序源代码
@@ -34,14 +38,17 @@ git clone -b manyuser https://github.com/lllvcs/shadowsocksr.git
 
 4.进入 Shadowsocks 这个目录，安装依赖
 
-yum -y install python-devel   
-or  apt install python-dev
+yum -y install python-devel
+or
+apt install python-dev
 
-yum -y install libffi-devel   
-or  apt install libffi-dev
+yum -y install libffi-devel
+or
+apt install libffi-dev
 
-yum -y install openssl-devel   
-or apt install openssl
+yum -y install openssl-devel
+or
+apt install openssl
 
 Debian 请勿执行下面这个命令，直接 pip install cymysql
 
@@ -59,14 +66,12 @@ cp apiconfig.py userapiconfig.py
 
 cp config.json user-config.json
 
-
-提权   chmod +x ./*
-
+提权
+chmod +x ./*
 
 设置自动启动
-
-vi /etc/rc.local    (CentOs  rc.local 提权)
-
+vi /etc/rc.local
+(CentOs  rc.local 提权)
 
 
 然后主要编辑 userapiconfig.py ,来解释下里面各项配置的意思
@@ -177,6 +182,7 @@ python server.py 用于调错的  这货当ssh关闭的时候就会停止，所�
 ./logrun.sh 有日志后台运行
 ./stop.sh 停止后台运行
 supervisord
+
 
 7.我们优化下
 
